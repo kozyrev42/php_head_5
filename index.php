@@ -20,7 +20,7 @@
 
 
 	// создание константы со значением пути до каталога
-	//define('GW_UPLOADPATH', 'images/');		
+	// define('GW_UPLOADPATH', 'images/');		
 
 	$dbConnect = mysqli_connect(HOST, USER, PASSWORD, DB_NAME)
 		or die('Ошибка соединения с Сервером');

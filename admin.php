@@ -49,6 +49,7 @@
 		echo '<td>' . $row['date'] . '</td>';
 		echo '<td>' . $row['score'] . '</td>';
 		echo '<td>' . $row['images'] . '</td>';
+		// при клике на ссылку, отправляем методом GET, данные в другой сценарий "removescore.php" на обработку
 		echo '<td> <a href="removescore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] .
 			'&amp;name=' . $row['name'] . '&amp;score=' . $row['score'] .
 			'&amp;images=' . $row['images'] . '"> Удалить </a> </td> </tr>';
@@ -57,7 +58,6 @@
 
 	mysqli_close($dbc);
 ?>
-
 
 </body>
 

@@ -9,12 +9,15 @@
 require_once('appvars.php');
 require_once('connectvars.php');
 
+
+// назначение переменным поступившими данными
 // если в сценарий приходит GET запрос, извлекаем из него данные
 if (isset($_GET['id']) && 
     isset($_GET['date']) && 
     isset($_GET['name']) &&
 	isset($_GET['score']) && 
-    isset($_GET['images']))   {
+    isset($_GET['images']))   
+	{
 	// извлечение данных рейтинга из суперглобального массива $_GET
 	$id = $_GET['id'];
 	$date = $_GET['date'];
@@ -35,10 +38,11 @@ else {
 	echo '<p class="error"> Ошибка </p>';
 }
 
-// если данные пришли по средствам $_POST
-if (isset($_POST['submit'])) {
-	if ($_POST['confirm']=='yes') {
 
+// если данные пришли по средствам $_POST из формы в этом же скрипте, в результате события 'submit'
+if (isset($_POST['submit'])) {
+	if ($_POST['confirm']=='yes') 	// если чекбокс активирован, выполнется блок
+		{
         @unlink (GW_UPLOADPATH . $screenshot);
 		// удаление с сервера > файла изображения с помощью функции unlink()
 		// функция принимает в аргументе путь до файла, который нужно удалить
@@ -60,9 +64,10 @@ if (isset($_POST['submit'])) {
 		echo '<p> Рейтинг не удалён! </p>';
 	}
 }
-// если данные $_POST не пришли > форму
+// если данные $_POST в результате события 'submit' не пришли > тогда форму на подтверждение удаления
 else if (isset($id) && isset($name) && isset($date)
-		 && isset($score) && isset($screenshot))  {
+		&& isset($score) && isset($screenshot))  
+		{
 	echo '<p> Вы уверены, что хотите удалить этот рейтинг?</p>';
 	echo '<p> Имя:' . $name . '<br/> Дата:' . $date .
 		  '<br/> Рейтинг:' . $score .
